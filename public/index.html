@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <title>PlanetQUIZ</title>
+</head>
+
+<body>
+  <noscript>
+    <style>
+      .no-js-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        font-size: 1.5rem;
+        text-align: center;
+        padding: 1rem;
+      }
+    </style>
+    <div class="no-js-overlay">
+      Este site requer JavaScript para funcionar corretamente. Por favor, habilite o JavaScript no seu navegador.
+    </div>
+  </noscript>
+
+  <!-- Seção inicial -->
+  <div class="container" id="secao-inicial" style="display: block;">
+    <h1>PlanetQUIZ</h1>
+    <button id="startButton">Iniciar</button>
+    <button id="OpcoesButton">Opções</button>
+    <button id="SobreButton">Sobre</button>
+<!--BOTAO-PARTY-->
+    <button id="partyButton">Modo Party</button>
+
+  </div>
+
+  <!-- Seção do quiz -->
+  <div class="container" id="secao-quiz" style="display: none;">
+    <div id="players-list"></div>
+    <h2 id="titulo-pergunta"></h2>
+    <p id="texto-pergunta"></p>
+    <div class="opcoes" id="container-opcoes"></div>
+    <div id="feedback"></div>
+    <button id="backButton">Voltar</button>
+  </div>
+
+  <!-- Seção de Opções -->
+  <div class="container" id="secao-opcoes" style="display: none;">
+    <h2>Opções do Jogo</h2>
+    <p>Ajuste as configurações aqui.</p>
+    <button id="botao-volume">🔊</button>
+
+    <h3>Histórico de Resultados</h3>
+    <div id="historico-lista">
+      <p>Nenhum resultado ainda.</p>
+    </div>
+    <button id="limparHistoricoButton">Limpar Histórico</button>
+
+    <!-- Botão para acessar as dificuldades -->
+    <button id="botao-dificuldade">Dificuldade</button>
+
+    <button id="backFromOpcoes">Voltar</button>
+  </div>
+
+  <!-- Seção de Dificuldade -->
+  <div class="container" id="secao-dificuldade" style="display: none;">
+    <h2>Selecione a Dificuldade</h2>
+    <button id="btn-6ano">6º ano</button>
+    <button id="btn-7ano">7º ano</button>
+    <button id="btn-8ano">8º ano</button>
+    <button id="btn-9ano">9º ano</button>
+    <button id="backFromDificuldade">Voltar</button>
+  </div>
+
+  <!-- Seção Sobre -->
+  <div class="container" id="secao-sobre" style="display: none;">
+    <h2>Sobre os desenvolveres e o PlanetQUIZ</h2>
+    <p>Este quiz foi criado com fins educativos, para ajudar no aprendizado de forma divertida e interativa. Foi desenvolvido por Paulo Henrique, com a valiosa participação de Lívia Krauze, Walison, Luiz Felipe e Esther Marques. Agradecemos a todos que colaboraram para tornar este projeto possível!</p>
+    <button id="backFromSobre">Voltar</button>
+  </div>
+
+  <!-- Sons -->
+  <audio id="som-acerto" src="Som/Green-Screen-Efeito-Sonoro-_Acerto_.mp3" preload="auto"></audio>
+  <audio id="som-erro" src="Som/efeito-sonoro-de-erro.mp3" preload="auto"></audio>
+
+  <!-- Efeitos visuais -->
+  <div id="mensagem-geral"></div>
+  <div id="particles-js"></div>
+
+  <script src="particles.min.js"></script>
+  <script src="particles-config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js"></script>
+  <script>
+    particlesJS.load('particles-js', 'particles-config.json', function () {
+      console.log('Particles.js carregado com sucesso!');
+    });
+  </script>
+
+  <div id="mensagem-resultado" class="resultado"></div>
+
+  <!-- Script principal -->
+  <script src="script.js"></script>
+<!-- Script multiplayer-->
+  <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+
+
+  <!-- Seção Modo Party -->
+<div class="container" id="secao-party" style="display: none;">
+  <h2>Modo Party</h2>
+  <input id="nomeJogador" placeholder="Seu nome" /><br>
+  <button id="btnCriarSala">Criar Sala</button>
+  <input id="codigoSalaInput" placeholder="Código da Sala" />
+  <button id="btnEntrarSala">Entrar</button>
+  <button id="voltarDeParty">Voltar</button>
+</div>
+
+<!-- Seção Sala Multiplayer -->
+<div class="container" id="secao-sala" style="display: none;">
+  <h2 id="codigoSalaDisplay"></h2>
+  <div id="jogadoresList"></div>
+  <button id="btnIniciarPartida">Iniciar Partida</button>
+  <button id="voltarDeSala">Sair</button>
+</div>
+
+</body>
+</html>

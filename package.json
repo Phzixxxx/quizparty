@@ -1,0 +1,15 @@
+{
+  "name": "meu-site-socket",
+  "version": "1.0.0",
+  "description": "Site com Socket.IO para Vercel",
+  "main": "index.js",
+  "scripts": {
+    "start": "vercel dev"
+  },
+  "dependencies": {
+    "socket.io": "^4.8.1"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}
